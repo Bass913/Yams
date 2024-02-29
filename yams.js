@@ -1,4 +1,7 @@
 const throwOfDice = (nbOfThrows) => {
+  if (typeof nbOfThrows !== "number") {
+    throw new Error("Invalid input. Please provide a number.");
+  }
   const NB_OF_DICE = 5;
   let total = 0;
 
@@ -65,11 +68,13 @@ const throwOfDice = (nbOfThrows) => {
     console.log(`Lancer ${throwIndex + 1}: Dés: ${dice}, Points: ${maxPoints}`);
   }
 
-  console.log(`Total: ${total}`);
+  return total;
 };
 
 const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-throwOfDice(5);
+console.log(throwOfDice(5));
+
+module.exports = { throwOfDice, getRandomInt };
